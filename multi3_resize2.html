@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/konva@7.2.0/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Game</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f7f6f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height,
+      });
+
+      var layer = new Konva.Layer();
+
+      var buraKaamText= new Konva.Text({
+        x: 70,
+        y: 400,
+            fontSize: 100,
+            fontFamily: 'Calibri',
+            text: 'Bura Kaam',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var buraKaam= new Konva.Rect({
+        x: 70,
+        y: 500,
+            width: 800,
+            height: 400,
+            fill: '#755139',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+      var achaKaamText= new Konva.Text({
+        x: 1000,
+        y: 400,
+            fontSize: 100,
+            fontFamily: 'Calibri',
+            text: 'Acha Kaam',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var achaKaam= new Konva.Rect({
+        x: 1000,
+        y: 500,
+            width: 800,
+            height: 400,
+            fill: '#F2EDD7',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+
+
+      layer.add(achaKaam);
+      layer.add(buraKaam);
+      layer.add(buraKaamText);
+      layer.add(achaKaamText);
+
+      var colors = ['#674a40', 'orange', 'yellow', 'green', 'blue', 'purple', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+      var text4u = ['Chocolate chori ker k khai', 'Mujhe bahut gussa ata hai', 'Aaj mummy ki help ki', 'Books padna bahut pasand hai',
+                      'Apna kaam time pr khatm ni kiya', 'Chhote bhai ki pitai ki.','khana thali me chhod diya', 'doggy ko patthar mara', 'book k pages faad diye',
+                        ];
+
+      for (var i = 0; i < 8; i++) {
+
+      var groupA = new Konva.Group({
+        draggable: true,
+      });
+
+        var blueText = new Konva.Text({
+          x: i * 30 + 50,
+          y: i * 18 + 40,
+          fontSize: 56,
+          fontFamily: 'Calibri',
+          text: text4u[i],
+          fill: 'black',
+          padding: 10,
+        });
+
+        var box = new Konva.Rect({
+          x: i * 30 + 50,
+          y: i * 18 + 40,
+          fill: colors[i],
+          stroke: 'black',
+          strokeWidth: 0,
+          width: blueText.width(),
+          height: blueText.height(),
+        });
+
+        // var blueText = new Konva.Text({
+        //   x: i * 40 + 70,
+        //   y: i * 28 + 80,
+        //   fontSize: 26,
+        //   fontFamily: 'Calibri',
+        //   text: text4u[i],
+        //   fill: 'black',
+        //   padding: 10,
+        // });
+
+        // box.on('dragstart', function () {
+        //   this.moveToTop();
+        //   layer.draw();
+        // });
+        //
+        // box.on('dragmove', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        // /*
+        //  * dblclick to remove box for desktop app
+        //  * and dbltap to remove box for mobile app
+        //  */
+        // box.on('dblclick dbltap', function () {
+        //   this.destroy();
+        //   layer.draw();
+        // });
+        //
+        // box.on('mouseover', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        //
+        // box.on('mouseout', function () {
+        //   document.body.style.cursor = 'default';
+        // });
+
+        // gg
+        blueText.on('dragstart', function () {
+          this.moveToTop();
+          layer.draw();
+        });
+
+        blueText.on('dragmove', function () {
+          document.body.style.cursor = 'pointer';
+        });
+        /*
+         * dblclick to remove box for desktop app
+         * and dbltap to remove box for mobile app
+         */
+        blueText.on('dblclick dbltap', function () {
+          this.destroy();
+          layer.draw();
+        });
+
+        box.on('dblclick dbltap', function () {
+          this.destroy();
+          layer.draw();
+        });
+
+        blueText.on('mouseover', function () {
+          document.body.style.cursor = 'pointer';
+        });
+
+        blueText.on('mouseout', function () {
+          document.body.style.cursor = 'default';
+        });
+
+
+        groupA.add(box);
+        groupA.add(blueText);
+        layer.add(groupA);
+        //layer.add(box);
+        //layer.add(blueText);
+
+
+
+      }
+
+      var colors2 = ['#674a40', 'orange', 'yellow', 'green', 'blue', 'purple', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+      var text4u2 = ['Aaj khana poora finish kiya', 'Apna home work finish kiya', 'Subah uth ker karagre Vaste kiya', 'bhojan se pehle prarthna ki',
+                      'aaj mene der tak soya', 'mene billi k uper pani feka', 'Aaj mene phone use nahi kiya', 'Aaj mene mumma ki baat mani'
+                        ];
+
+      for (var i = 0; i < 8; i++) {
+
+      var groupA = new Konva.Group({
+        draggable: true,
+      });
+
+        var blueText = new Konva.Text({
+          x: i * 30 + 650,
+          y: i * 18 + 40,
+          fontSize: 56,
+          fontFamily: 'Calibri',
+          text: text4u2[i],
+          fill: 'black',
+          padding: 10,
+        });
+
+        var box = new Konva.Rect({
+          x: i * 30 + 650,
+          y: i * 18 + 40,
+          fill: colors2[i],
+          stroke: 'black',
+          strokeWidth: 0,
+          width: blueText.width(),
+          height: blueText.height(),
+        });
+
+        // var blueText = new Konva.Text({
+        //   x: i * 40 + 70,
+        //   y: i * 28 + 80,
+        //   fontSize: 26,
+        //   fontFamily: 'Calibri',
+        //   text: text4u[i],
+        //   fill: 'black',
+        //   padding: 10,
+        // });
+
+        // box.on('dragstart', function () {
+        //   this.moveToTop();
+        //   layer.draw();
+        // });
+        //
+        // box.on('dragmove', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        // /*
+        //  * dblclick to remove box for desktop app
+        //  * and dbltap to remove box for mobile app
+        //  */
+        // box.on('dblclick dbltap', function () {
+        //   this.destroy();
+        //   layer.draw();
+        // });
+        //
+        // box.on('mouseover', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        //
+        // box.on('mouseout', function () {
+        //   document.body.style.cursor = 'default';
+        // });
+
+        // gg
+        blueText.on('dragstart', function () {
+          this.moveToTop();
+          layer.draw();
+        });
+
+        blueText.on('dragend', function () {
+          this.moveToTop();
+          layer.draw();
+        });
+
+        blueText.on('dragmove', function () {
+          document.body.style.cursor = 'pointer';
+          this.moveToTop();
+        });
+        /*
+         * dblclick to remove box for desktop app
+         * and dbltap to remove box for mobile app
+         */
+        blueText.on('dblclick dbltap', function () {
+          this.destroy();
+          layer.draw();
+        });
+
+        box.on('dblclick dbltap', function () {
+          this.destroy();
+          layer.draw();
+        });
+
+        blueText.on('mouseover', function () {
+          document.body.style.cursor = 'pointer';
+        });
+
+        blueText.on('mouseout', function () {
+          document.body.style.cursor = 'default';
+        });
+
+
+        groupA.add(box);
+        groupA.add(blueText);
+        layer.add(groupA);
+        //layer.add(box);
+        //layer.add(blueText);
+
+
+
+      }
+
+      function haveIntersection(r1, r2) {
+             return !(
+               r2.x > r1.x + r1.width ||
+               r2.x + r2.width < r1.x ||
+               r2.y > r1.y + r1.height ||
+               r2.y + r2.height < r1.y
+             );
+           }
+
+
+
+
+      // add the layer to the stage
+      stage.add(layer);
+
+    </script>
+  </body>
+</html>
