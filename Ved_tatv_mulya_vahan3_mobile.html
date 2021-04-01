@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/konva@7.2.0/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Game</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f7f6f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: 2000,
+      });
+
+      var layer = new Konva.Layer();
+
+      var VedText= new Konva.Text({
+        x: stage.width()/30,
+        y: 800,
+            fontSize: 70,
+            fontFamily: 'Calibri',
+            text: 'Ved',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var VedGrp= new Konva.Rect({
+        x: stage.width()/30,
+        y: 870,
+            width: 300,
+            height: 300,
+            fill: '#FF617A',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+      var MulyaText= new Konva.Text({
+        x: stage.width()/30,
+        y: 1200,
+            fontSize: 70,
+            fontFamily: 'Calibri',
+            text: 'Mulya',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var MulyaGrp= new Konva.Rect({
+        x: stage.width()/30,
+        y: 1280,
+            width: 300,
+            height: 300,
+            fill: '#54E38A',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+
+      var PanchTatvText= new Konva.Text({
+        x: stage.width()/30 +400,
+        y: 800,
+            fontSize: 70,
+            fontFamily: 'Calibri',
+            text: 'Panch Tatv',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var PanchTatvGrp= new Konva.Rect({
+        x: stage.width()/30 +400,
+        y: 870,
+            width: 300,
+            height: 300,
+            fill: '#9154E3',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+
+      var IntrumentText= new Konva.Text({
+        x: stage.width()/30 +400,
+        y: 1200,
+            fontSize: 70,
+            fontFamily: 'Calibri',
+            text: 'Instrument',
+            fill: 'black',
+            padding: 10,
+          });
+
+      var IntrumentGrp= new Konva.Rect({
+        x: stage.width()/30 +400,
+        y: 1280,
+            width: 300,
+            height: 300,
+            fill: '#E4FB5D',
+            stroke: 'black',
+            strokeWidth: 0,
+          });
+
+
+
+      layer.add(PanchTatvGrp);
+      layer.add(VedGrp);
+      layer.add(MulyaGrp);
+      layer.add(IntrumentGrp);
+      layer.add(VedText);
+      layer.add(PanchTatvText);
+      layer.add(MulyaText);
+      layer.add(IntrumentText);
+
+      var colors = ['pink', 'orange', 'yellow', 'lime', 'lime', 'purple', 'red', 'orange', 'yellow', 'green', 'lime', 'fuchsia',
+                    'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'red', 'orange', 'yellow', 'green', 'blue', 'olive'];
+
+      var text4u = ['Satya', 'Jal', 'Rig', 'Shanti', 'Bhoomi', 'Veena', 'Damru',
+                      'Prem', 'Atharv','Basuri', 'Saam', 'Agni', 'Ahimsa', 'Vayu',
+                      'Dharm', 'Akash', 'Yajur', ];
+
+      for (var i = 0; i < 17; i++) {
+
+      var groupA = new Konva.Group({
+        draggable: true,
+      });
+
+      randInt = Math.floor(Math.random() * 401);
+      //alert(randInt);
+
+        var blueText = new Konva.Text({
+          x: i * 10 + randInt,
+          y: i * 30 + 80,
+          fontSize: 56,
+          fontFamily: 'Calibri',
+          text: text4u[i],
+          fill: 'black',
+          padding: 10,
+        });
+
+        var box = new Konva.Rect({
+          x: i * 10 + randInt,
+          y: i * 30 + 80,
+          fill: colors[i],
+          stroke: 'black',
+          strokeWidth: 0,
+          width: blueText.width(),
+          height: blueText.height(),
+        });
+
+        // var blueText = new Konva.Text({
+        //   x: i * 40 + 70,
+        //   y: i * 28 + 80,
+        //   fontSize: 26,
+        //   fontFamily: 'Calibri',
+        //   text: text4u[i],
+        //   fill: 'black',
+        //   padding: 10,
+        // });
+
+        // box.on('dragstart', function () {
+        //   this.moveToTop();
+        //   layer.draw();
+        // });
+        //
+        // box.on('dragmove', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        // /*
+        //  * dblclick to remove box for desktop app
+        //  * and dbltap to remove box for mobile app
+        //  */
+        // box.on('dblclick dbltap', function () {
+        //   this.destroy();
+        //   layer.draw();
+        // });
+        //
+        // box.on('mouseover', function () {
+        //   document.body.style.cursor = 'pointer';
+        // });
+        //
+        // box.on('mouseout', function () {
+        //   document.body.style.cursor = 'default';
+        // });
+
+        // gg
+        blueText.on('dragstart', function () {
+          this.moveToTop();
+          layer.draw();
+        });
+
+        blueText.on('dragmove', function () {
+          document.body.style.cursor = 'pointer';
+        });
+        /*
+         * dblclick to remove box for desktop app
+         * and dbltap to remove box for mobile app
+         */
+        blueText.on('dblclick dbltap', function () {
+          this.destroy();
+          layer.draw();
+        });
+
+        blueText.on('mouseover', function () {
+          document.body.style.cursor = 'pointer';
+        });
+
+        blueText.on('mouseout', function () {
+          document.body.style.cursor = 'default';
+        });
+
+
+        groupA.add(box);
+        groupA.add(blueText);
+        layer.add(groupA);
+        //layer.add(box);
+        //layer.add(blueText);
+
+
+
+      }
+
+     
+
+      function haveIntersection(r1, r2) {
+             return !(
+               r2.x > r1.x + r1.width ||
+               r2.x + r2.width < r1.x ||
+               r2.y > r1.y + r1.height ||
+               r2.y + r2.height < r1.y
+             );
+           }
+
+
+
+
+      // add the layer to the stage
+      stage.add(layer);
+
+
+
+      function fitStageIntoParentContainer() {
+        var container = document.querySelector('#stage-parent');
+
+        // now we need to fit stage into parent
+        var containerWidth = container.offsetWidth;
+        // to do this we need to scale the stage
+        var scale = containerWidth / stageWidth;
+
+        stage.width(stageWidth * scale);
+        stage.height(stageHeight * scale);
+        stage.scale({ x: scale, y: scale });
+        stage.draw();
+      }
+
+      fitStageIntoParentContainer();
+      // adapt the stage on any window resize
+      window.addEventListener('resize', fitStageIntoParentContainer);
+
+    </script>
+  </body>
+</html>
